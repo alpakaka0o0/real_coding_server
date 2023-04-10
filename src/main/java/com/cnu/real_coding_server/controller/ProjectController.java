@@ -15,7 +15,7 @@ import java.util.List;
 public class ProjectController {
     private final ProjectService projectService;
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<Project> createProject(@RequestBody ProjectRequest projectRequest) {
         return ResponseEntity.ok(projectService.createProject(projectRequest));
     }

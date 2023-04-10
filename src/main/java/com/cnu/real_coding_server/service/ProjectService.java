@@ -1,8 +1,8 @@
 package com.cnu.real_coding_server.service;
 
-import com.cnu.real_coding_server.entity.Post;
 import com.cnu.real_coding_server.entity.Project;
-import com.cnu.real_coding_server.model.request.PostRequest;
+import com.cnu.real_coding_server.entity.Project;
+import com.cnu.real_coding_server.model.request.ProjectRequest;
 import com.cnu.real_coding_server.model.request.ProjectRequest;
 import com.cnu.real_coding_server.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,12 +25,12 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public Optional<Project> getProject(Integer postId) {
-        return projectRepository.findById(postId);
+    public Optional<Project> getProject(Integer projectId) {
+        return projectRepository.findById(projectId);
     }
 
-    public Optional<Project> updateProject(Integer postId, ProjectRequest projectRequest) {
-        return projectRepository.findById(postId)
+    public Optional<Project> updateProject(Integer projectId, ProjectRequest projectRequest) {
+        return projectRepository.findById(projectId)
                 .map(project -> {
                     project.setTitle(projectRequest.getTitle());
                     project.setSummary(projectRequest.getSummary());
@@ -42,8 +42,8 @@ public class ProjectService {
                 });
     }
     //ㅇㅅㅇ
-    public void deleteProject(Integer postId) {
-        projectRepository.findById(postId)
+    public void deleteProject(Integer projectId) {
+        projectRepository.findById(projectId)
                 .ifPresent(projectRepository::delete);
     }
 }
